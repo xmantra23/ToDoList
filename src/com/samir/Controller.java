@@ -52,6 +52,7 @@ public class Controller {
     private Predicate<TodoItem> wantTodaysItems;
     private Predicate<TodoItem> wantTomorrowsItems;
     private Predicate<TodoItem> wantPastDueItems;
+    //methods
     
     public void initialize(){
         todoListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TodoItem>() {
