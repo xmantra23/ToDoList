@@ -1,0 +1,15 @@
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<DialogPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.samir.DialogController">
+    <content>
+        <GridPane vgap ="10" hgap="10">
+            <Label text = "Title: " GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <TextField fx:id = "title" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            <Label text = "Details: " GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <TextArea fx:id = "details" GridPane.rowIndex="1" GridPane.columnIndex="1" wrapText="true"/>
+            <Label text = "Deadline: " GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <DatePicker fx:id = "datePicker" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+        </GridPane>
+    </content>
+</DialogPane>

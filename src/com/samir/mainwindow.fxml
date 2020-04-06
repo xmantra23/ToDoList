@@ -1,0 +1,86 @@
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<BorderPane fx:id = "mainBorderPane" fx:controller="com.samir.Controller"
+            xmlns:fx="http://javafx.com/fxml" stylesheets="@stylesheet.css">
+    <top>
+        <VBox>
+            <MenuBar>
+                <Menu text = "File">
+                    <items>
+                        <MenuItem text="Add Item" onAction="#showNewItemDialog"/>
+                        <SeparatorMenuItem/>
+                        <MenuItem text="Edit Item" onAction="#showEditItemDialog"/>
+                        <SeparatorMenuItem/>
+                        <MenuItem text = "Exit"  onAction = "#closeProgram"/>
+                    </items>
+                </Menu>
+            </MenuBar>
+
+            <ToolBar>
+                <HBox spacing="10" alignment="CENTER">
+                    <Button onAction="#showNewItemDialog">
+                        <tooltip>
+                            <Tooltip text = "Add a new todo item"/>
+                        </tooltip>
+                        <graphic>
+                            <ImageView>
+                                <Image url = "@/toolbarButtonGraphics/general/Add24.gif"/>
+                            </ImageView>
+                        </graphic>
+                    </Button>
+
+                    <Button onAction="#showEditItemDialog">
+                        <tooltip>
+                            <Tooltip text = "Edit current item"/>
+                        </tooltip>
+                        <graphic>
+                            <ImageView>
+                                <Image url = "@/toolbarButtonGraphics/general/Edit24.gif"/>
+                            </ImageView>
+                        </graphic>
+                    </Button>
+
+                    <fx:define>
+                        <ToggleGroup fx:id="radioGroup" />
+                    </fx:define>
+                    <RadioButton fx:id="dueTodayButton" text = "Due Today" onAction="#handleRadioButton" toggleGroup="$radioGroup"/>
+                    <RadioButton fx:id="pastDueButton" text = "Past Due" onAction="#handleRadioButton" toggleGroup="$radioGroup"/>
+                    <RadioButton fx:id="dueTomorrowButton" text = "Due Tomorrow" onAction="#handleRadioButton" toggleGroup="$radioGroup"/>
+                    <RadioButton fx:id="displayAllButton" text = "All Items" onAction="#handleRadioButton" toggleGroup="$radioGroup" selected="true"/>
+
+                </HBox>
+            </ToolBar>
+        </VBox>
+    </top>
+
+    <left>
+        <ListView fx:id = "todoListView" onKeyPressed="#handleKeyPressed">
+
+        </ListView>
+    </left>
+
+    <center>
+        <VBox style = "-fx-background-color: white">
+            <TextArea fx:id = "itemDetails" VBox.vgrow="ALWAYS" wrapText="true" editable="false"/>
+            <HBox>
+                <Label styleClass="deadlineLabel" text = "Due: ">
+                    <font>
+                        <Font name = "Times New Roman bold" size = "20"/>
+                    </font>
+                </Label>
+                <Label styleClass="deadlineLabel" fx:id = "deadlineLabel">
+                    <font>
+                        <Font name = "Times New Roman bold" size = "20"/>
+                    </font>
+                </Label>
+            </HBox>
+        </VBox>
+
+    </center>
+</BorderPane>
+
